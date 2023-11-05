@@ -16,3 +16,5 @@ Las reglas que el autómata deberá cumplir son las siguientes:
 
 ## Diagrama de Estados
 
+![digrama-estados-automata-contraseña](https://github.com/F3liP3L/AFD_For_Password/blob/main/assets/Automata_Password_Diagrama.png)
+
