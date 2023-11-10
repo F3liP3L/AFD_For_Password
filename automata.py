@@ -1,7 +1,7 @@
 uppercase = 'A-Z'
 number = '0-9'
 lowercase = 'a-z'
-specialCharacter = '!¡@#$%^&*()_+{}[]:;<>,.¿?~\\/='
+specialCharacter = '-!¡@#$%^&*()_+{}[]:;<>,.¿?~\\/='
 
 statusFinal = 'q59'
 
@@ -39,8 +39,8 @@ transitions = {
     'q44': {uppercase: 'q44', lowercase: 'q46', number: 'q47', specialCharacter: 'q44'},
     'q45': {uppercase: 'q45', lowercase: 'q45', number: 'q45', specialCharacter: 'q59'},
     'q46': {uppercase: 'q46', lowercase: 'q46', number: 'q59', specialCharacter: 'q46'},
-    'q47': {uppercase: 'q47', lowercase: 'q47', number: 'q59', specialCharacter: 'q47'},
-    'q49': {uppercase: 'q49', lowercase: 'q49', number: 'q59', specialCharacter: 'q49'},
+    'q47': {uppercase: 'q47', lowercase: 'q59', number: 'q47', specialCharacter: 'q47'},
+    'q49': {uppercase: 'q49', lowercase: 'q49', number: 'q49', specialCharacter: 'q59'},
     'q50': {uppercase: 'q50', lowercase: 'q59', number: 'q50', specialCharacter: 'q50'},
     'q51': {uppercase: 'q51', lowercase: 'q51', number: 'q51', specialCharacter: 'q59'},
     'q53': {uppercase: 'q53', lowercase: 'q53', number: 'q53', specialCharacter: 'q59'},
@@ -68,8 +68,11 @@ def accepted(chain):
     status = 'q0'
     for character in chain:
         inputChain = validateAlphabet(character)
+        print("chain: " + inputChain)
         if inputChain in transitions[status]:
             status = transitions[status][inputChain]
+            print("status: " + status)
+            print(transitions[status])
         else:
             return False  # El caracter no es válido.
     return status in {statusFinal}
@@ -77,7 +80,7 @@ def accepted(chain):
 
 testInput = 0
 while testInput == 0:
-    password = input('Ingresa una contraseña segura :D ')
+    password = input('Ingresa una contraseña segura : ')
     if accepted(password):
         print('\t La cadena es aceptada.')
     else:
